@@ -1,0 +1,2 @@
+export PATH=$PATH:/home/fune/.composer/vendor/bin lumen
+.bashrs
