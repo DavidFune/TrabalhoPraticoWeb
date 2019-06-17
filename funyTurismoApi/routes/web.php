@@ -11,6 +11,14 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+//$router->get('/api/pacotes','PacoteController@buscarPacotes');
+
+$router->get('/api/pacotes', 'PacoteController@buscarTodosPacotes');
+
+$router->group(['prefix' => 'api/pacote'], function () use ($router) {	
+    $router->get('', 'PacoteController@buscarPacote');
+    $router->get('/detalhes', 'PacoteController@buscarDetalhePacote');
+    $router->post('/','PacoteController@criarPacote'); 
+    $router->put('','PacoteController@editarPacote');
+    $router->delete('', 'PacoteController@excluirPacote'); 	
 });
