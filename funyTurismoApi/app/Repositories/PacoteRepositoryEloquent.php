@@ -2,11 +2,14 @@
 namespace App\Repositories;
  use App\Models\Pacote;
  use App\Repositories\PacoRepositoryInterface;
+ //essa é a classe responśvel pela requisiçãos 
  use Illuminate\Http\Request;
 
+ //classe responsável por implentar todas a consultas ao banco
  class PacoteRepositoryEloquent implements PacoteRepositoryInterface{
      private $pacote;
      //o proprio fremework faz a instacia de Pacote como objeto
+     //no metodo
      public function __construct(Pacote $pacote){
          $this->pacote = $pacote;
      }
@@ -20,7 +23,8 @@ namespace App\Repositories;
              'valor',
              'dataInicio',
              'dataFim',
-             'urlImagem'
+             'urlImagem',
+             'id'
          )->get();
      }
 
@@ -28,7 +32,7 @@ namespace App\Repositories;
     {     
         return $this->pacote
         ->select(
-            'id',
+            //'id',
             'nome',
             'valor',
             'dataInicio',
@@ -41,6 +45,7 @@ namespace App\Repositories;
  
     public function buscarDetalhePacote(int $id) 
     {
+        // o metodo find trás todo os dados de um $id
         return $this->pacote->find($id);      
     }
  
@@ -51,6 +56,9 @@ namespace App\Repositories;
  
     public function editarPacote(int $id, Request $request) 
     {        
+        // trás as informações de um pacote e update atualiza a informação
+        // where trás a informações e update atualiza
+        
         return $this->pacote
         ->where('id', $id)
         ->update($request->all());

@@ -11,8 +11,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // injeção de dependencia
     public function register()
     {
-        //
+        $this->app->bind(
+         'App\Repositories\PacoteRepositoryInterface', 
+         'App\Repositories\PacoteRepositoryEloquent');
     }
 }
