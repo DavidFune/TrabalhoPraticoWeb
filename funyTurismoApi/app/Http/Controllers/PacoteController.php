@@ -31,4 +31,9 @@ class PacoteController extends Controller{
         return $this->pacoteService->excluirPacote($id);
 
     }
+
+    public function buscarDetalhePacote(int $id) 
+    {
+        return $this->pacoteService->buscarDetalhePacote($id); 
+    }
 }

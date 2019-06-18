@@ -14,15 +14,17 @@
 //$router->get('/api/pacotes','PacoteController@buscarPacotes');
 
 $router->get('/api/pacotes', 'PacoteController@buscarTodosPacotes');
-$router->get('/api/pacote/{id}', 'PacoteController@buscarPacote');
+
+/* $router->get('/api/pacote/{id}', 'PacoteController@buscarPacote');
+$router->get('/api/pacote/{id}/detalhes', 'PacoteController@buscarDetalhePacote');
 $router->post('/api/pacote', 'PacoteController@criarPacote');
 $router->put('/api/pacote/{id}', 'PacoteController@editarPacote');
 $router->delete('/api/pacote/{id}', 'PacoteController@excluirPacote');
-
-/* $router->group(['prefix' => 'api/pacote'], function () use ($router) {	
-    $router->get('', 'PacoteController@buscarPacote');
-    $router->get('/detalhes', 'PacoteController@buscarDetalhePacote');
-    $router->post('/','PacoteController@criarPacote'); 
-    $router->put('','PacoteController@editarPacote');
-    $router->delete('', 'PacoteController@excluirPacote'); 	
-}); */
+ */
+$router->group(['prefix' => 'api/pacote'], function () use ($router) {	
+    $router->get('{id}', 'PacoteController@buscarPacote');
+    $router->get('{id}/detalhes', 'PacoteController@buscarDetalhePacote');
+    $router->post('','PacoteController@criarPacote'); 
+    $router->put('{id}','PacoteController@editarPacote');
+    $router->delete('{id}', 'PacoteController@excluirPacote'); 	
+});
