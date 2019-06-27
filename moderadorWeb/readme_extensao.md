@@ -1,0 +1,3 @@
+
+Uma API, como o próprio nome diz, é uma interface da aplicação que contém as URLs relacionadas a cada recurso da mesma. Dessa forma, para consumir uma API, devemos fazer uma requisição para essas URL e aguardar uma resposta. Para realizar essa ação no Laravel, utilizaremos a biblioteca Guzzle, que não é nativa do Laravel. Para instalá-lo utilizaremos o Composer: pasta vendor
+composer require guzzlehttp/guzzle:~6.0
