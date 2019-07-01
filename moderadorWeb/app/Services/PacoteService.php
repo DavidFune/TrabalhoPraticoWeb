@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use App\Models\ValidacaoPacote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -51,10 +52,10 @@ class PacoteService{
 
 
     public function bucarPacotes(){
-        return $this->api->GEt('pacotes');
+        return $this->api->get('pacotes');
     }
     public function buscarPacote($id){
-        return $this->api->GET('pacote'.$id.'detalhes');
+        return $this->api->get('pacote'.$id.'detalhes');
     }
 
     public function excluirPacote($id){

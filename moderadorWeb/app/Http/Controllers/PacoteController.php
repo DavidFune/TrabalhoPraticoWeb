@@ -13,7 +13,7 @@ class PacoteController extends Controller{
     }
 
     public function home(){
-        $pacotes = $this->pacoteService->buscarPacotes();
+        $pacotes = $this->pacoteService->bucarPacotes();
         return view('home')->with('pacotes', $pacotes);
     }
 

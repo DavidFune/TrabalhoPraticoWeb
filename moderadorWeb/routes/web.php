@@ -9,13 +9,12 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
-/* Route::get('/', 'PacoteController@home');
+ Route::get('/', 'PacoteController@home');
 
 Route::prefix('pacote')->group(function () {
     Route::get('cadastro', 'PacoteController@cadastro');
@@ -24,4 +23,4 @@ Route::prefix('pacote')->group(function () {
     Route::post('edicao', 'PacoteController@editarPacote');
     Route::get('exclusao/{id}', 'PacoteController@confirmarExclusao');
     Route::post('exclusao', 'PacoteController@excluirPacote');
-}); */
+});

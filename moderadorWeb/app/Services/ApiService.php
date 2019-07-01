@@ -1,5 +1,5 @@
 <?php
-namespace App\ApiServices;
+namespace App\Services;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Support\MessageBag;
@@ -27,6 +27,7 @@ class ApiService{
     //$endPoint é o caminho ex: api/pacotes que retorna lista de pacote
     public function get(string $endPoint){
         try {
+
             $requisicao = $this->client->request('GET', $endPoint);
             $status = $requisicao->getStatusCode();
 

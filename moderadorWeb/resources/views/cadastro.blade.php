@@ -91,10 +91,10 @@
                                 </div>
                             </div>
 
+{{--                       <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="site" class="col-md-4 col-form-label text-md-right">Site</label>
 
-                                <div class="col-md-6">
                                     <input id="site" type="text"
                                            class="form-control{{ $errors->has('site') ? ' is-invalid' : '' }}"
                                            name="site" value="{{ old('site') }}" required autofocus>
@@ -105,7 +105,7 @@
                                         </span>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group row">
                                 <label for="urlImagem" class="col-md-4 col-form-label text-md-right">Imagem</label>
