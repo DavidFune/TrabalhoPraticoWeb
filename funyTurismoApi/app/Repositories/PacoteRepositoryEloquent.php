@@ -32,7 +32,7 @@ namespace App\Repositories;
     {     
         return $this->pacote
         ->select(
-            //'id',
+            'id',
             'nome',
             'valor',
             'dataInicio',

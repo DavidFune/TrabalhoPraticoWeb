@@ -17,8 +17,8 @@ class ApiService{
     // metodo responsavel por fazer a conexão com api
     private function getConnection(){
         try {
-            $this->client = new Client(['base_uri ' => self::API_URL]);
-
+            //$this->client = new Client(['base_uri ' => self::API_URL]);
+            $this->client = new Client();
         } catch (Exception $e) {
             return $e-> getCode();
         }
@@ -27,15 +27,15 @@ class ApiService{
     //$endPoint é o caminho ex: api/pacotes que retorna lista de pacote
     public function get(string $endPoint){
         try {
-
-            $requisicao = $this->client->request('GET', $endPoint);
+            $requisicao = $this->client->request('GET',self::API_URL.$endPoint);
             $status = $requisicao->getStatusCode();
 
             return [
                 'dados' => json_decode($requisicao->getBody()->getContents(), true),
+                //'dados' => json_decode($requisicao->getBody()),
                 'status' => $status
             ];
-
+            
         } catch (ConnectException $e) {
             return [
                 'erro' => 'Erro de Conexao com a API: ' . self::API_URL,
@@ -50,8 +50,9 @@ class ApiService{
     }
 
     public function post(string $endPoint, array $dados){
+       // $uri = 'http://localhost:8200/api/'. $endPoint;
         try {
-            $requisicao = $this->client->request('POST', $endPoint, $dados);
+            $requisicao = $this->client->request('POST', self::API_URL.$endPoint, $dados);
             $status = $requisicao->getStatusCode();
 
             return [
@@ -82,8 +83,9 @@ class ApiService{
     }
 
     public function put(string $endPoint, array $dados){
+       // $uri = 'http://localhost:8200/api/'. $endPoint;
         try {
-            $requisicao = $this->client->request('PUT', $endPoint, $dados);
+            $requisicao = $this->client->request('PUT', self::API_URL.$endPoint, $dados);
             $status = $requisicao->getStatusCode();
 
             return [
@@ -104,8 +106,9 @@ class ApiService{
     }
 
     public function delete(string $endPoint){
+        //$uri = 'http://localhost:8200/api/'. $endPoint;
         try {
-            $requisicao = $this->client->request('DELETE', $endPoint);
+            $requisicao = $this->client->request('DELETE', self::API_URL.$endPoint);
             $status = $requisicao->getStatusCode();
 
             return [

@@ -52,10 +52,10 @@ class PacoteService{
 
 
     public function bucarPacotes(){
-        return $this->api->get('pacotes');
+        return $this->api->GET('pacotes');
     }
     public function buscarPacote($id){
-        return $this->api->get('pacote'.$id.'detalhes');
+        return $this->api->GET('pacote/'.$id.'/detalhes');
     }
 
     public function excluirPacote($id){
