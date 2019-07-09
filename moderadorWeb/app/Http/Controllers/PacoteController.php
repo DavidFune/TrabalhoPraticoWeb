@@ -12,9 +12,16 @@ class PacoteController extends Controller{
         $this->pacoteService = new PacoteService();
     }
 
+
+//################ moderador
     public function home(){
         $pacotes = $this->pacoteService->bucarPacotes();
         return view('home')->with('pacotes', $pacotes);
+    }
+//################ usuario
+    public function homeUser(){
+        $pacotes = $this->pacoteService->bucarPacotes();
+        return view('usuario.index')->with('pacotes', $pacotes);
     }
 
     public function cadastro(){

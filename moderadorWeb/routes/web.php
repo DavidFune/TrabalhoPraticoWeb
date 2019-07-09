@@ -15,6 +15,7 @@ Route::get('/', function () {
 */
 
  Route::get('/', 'PacoteController@home');
+ Route::get('/usuario','PacoteController@homeUser');
 
 Route::prefix('pacote')->group(function () {
     Route::get('cadastro', 'PacoteController@cadastro');

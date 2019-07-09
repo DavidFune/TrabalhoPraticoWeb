@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','PacoteController@index');
+Route::get('/pacote/detalhe/{id}','PacoteController@detalhePacote');
