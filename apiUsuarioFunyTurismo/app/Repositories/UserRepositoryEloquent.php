@@ -15,9 +15,20 @@ class UserRepositoryEloquent
     }
 
     public function registrarUsuario(Request $request){
+        
 
-        $this->user->create($request->all());
+        $this->user->name = $request->input('name');
+        $this->user->email = $request->input('email');
+        $this->user->idPacote = $request->input('idPacote');
+        $plainPassword = $request->input('password');
+        $this->user->password = app('hash')->make($plainPassword);
+        $this->user->save();
+        
+        return $this->user;
+    }
 
+    public function login(Request $request){
+        $this->user->login($request);
     }
 
 }
