@@ -6,5 +6,8 @@ dd('test');
 
 interface UserRepositoryInterface{
     public function registrarUsuario(Request $request);
+    public function detalhesUsusario(String $email);
+    public function editarUsuario(String $email, Request $request);
+    public function deletarUsusario(String $email);
 
 }

@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\User;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserRepositoryEloquent 
 //implements UserRepositoryInterface
@@ -27,8 +28,26 @@ class UserRepositoryEloquent
         return $this->user;
     }
 
-    public function login(Request $request){
-        $this->user->login($request);
+    public function detalhesUsusario(String $email){
+        return $this->user->where($email)->get;
+    }
+
+    public function editarUsuario(String $email, Request $request){
+
+        return $this->user->where('email', $email)->update($request->all());
+    }
+
+    public function deletarUsusario(String $email){
+        $user = $this->user->find($email);
+        return $user->delete();
+    }
+
+    public function login(Request $request)
+    {
+
+        return $request->only(['email', 'password']);
+
+        //dd($credentials);
     }
 
 }

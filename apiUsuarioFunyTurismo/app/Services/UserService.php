@@ -8,7 +8,6 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ValidacaoUsuario;
 use Illuminate\Support\Facades\Auth;
-use app\User;
 
 class UserService{
     
@@ -40,30 +39,94 @@ class UserService{
                  return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         }
-
-
-        
-        
+     
     }
 
-    public function login(Request $request)
-    {
+    public function detalhesUsusario(String $email){
 
-        $credentials = $request->only(['email', 'password']);
+        try{
+            $user = $this->user->detalhesUsusario($email);
+            return response()->json([
+                'nome' => $user->name,
+                'email'=> $user->email
+            ], Response::HTTP_OK);
+        } catch(QueryException $e){
+            
+            return response()->json(['erro'=> 'Erro de conexão com o banco'],
+             Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 
-        //dd($credentials);
+    public function editarUsuario(String $email, Request $request){
 
-        if (! $token = Auth::attempt($credentials)) {
-            //return
-             print (response()->json(['message' => 'Unauthorized'], 401));
+        $validacao = Validator::make(
+            $request->all(),
+            ValidacaoPacote::REGRA_NOVO_PACOTE,
+            ValidacaoPacote::MENSAGENS_DE_ERRO              
+        );
+ 
+        if($validacao->fails()) {
+            return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
+        } else {
+            try {
+                $user = $this->userRepository->editarUsuario($email, $request);            
+                return response()->json($user, Response::HTTP_OK);
+            } catch(QueryException $e) {
+                return response()->json(['erro'=> 'Erro de conexão com o banco']
+                , Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
         }
 
-        return $this->respondWithToken($token);
     }
+
+    public function deletarUsusario(String $email){
+
+        try {
+            $user = $this->userRepository->excluirUsuario($email);           
+            return response()->json(null, Response::HTTP_OK);
+        } catch(QueryException $e) {
+            return response()->json(['erro'=> 'Erro de conexão com o banco'],
+             Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+    public function login(Request $request){
+
+        $validacao = Validator::make(
+            $request->all(),
+            ValidacaoUsuario::REGRA_NOVO_USUARIO,
+            ValidacaoUsuario::MENSAGENS_DE_ERRO
+        );
+
+
+
+        if($validacao->fails()) {
+            return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
+        } else {
+
+            try {
+                $credentials = $this->userRepository->login($request);
+
+                if (! $token = Auth::attempt($credentials)) {
+                    return response()->json(['message' => 'Usuário não autorizado'], 401);
+                }
+                
+                return $this->respondWithToken($token);
+
+                return response()->json($user, Response::HTTP_OK);
+            } catch(QueryException $e) {
+                return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+
 
     protected function respondWithToken($token)
     {
         
+        // return
         print( response()->json([
             'token' => $token,
             'token_type' => 'bearer',

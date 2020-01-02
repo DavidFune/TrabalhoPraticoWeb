@@ -19,4 +19,16 @@ class UserController extends Controller{
     public function login(Request $request){
         $this->userService->login($request);
     }
+
+    public function detalhesUsusario(String $email){
+        $this->userService->detalhesUsusario($email);
+    }
+
+    public function editarUsuario(String $email, Request $request){
+        $this->userService->editarUsuario($email, $request);
+    }
+
+    public function deletarUsusario(String $email){
+        $this->userService->deletarUsusario($email);
+    }
 }
