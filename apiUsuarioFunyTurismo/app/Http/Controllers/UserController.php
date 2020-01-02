@@ -9,26 +9,29 @@ class UserController extends Controller{
     private $userService;
 
     public function __construct(UserService $userService){
-        $this->userService = $userService;
+        return $this->userService = $userService;
     }
 
     public function registrarUsuario(Request $resquest){
-        $this->userService->registrarUsuario($resquest);
+        return $this->userService->registrarUsuario($resquest);
     }
 
     public function login(Request $request){
-        $this->userService->login($request);
+        return $this->userService->login($request);
     }
 
-    public function detalhesUsusario(String $email){
-        $this->userService->detalhesUsusario($email);
+    public function detalhesUsusario(int $id){
+        return $this->userService->detalhesUsusario($id);
     }
 
-    public function editarUsuario(String $email, Request $request){
-        $this->userService->editarUsuario($email, $request);
+    public function editarUsuario(int $id, Request $request){
+        $this->userService->editarUsuario($id, $request);
     }
 
-    public function deletarUsusario(String $email){
-        $this->userService->deletarUsusario($email);
+    public function deletarUsuario(int $id){
+        $this->userService->deletarUsusario($id);
+    }
+    public function comprarPacote(int $idPacote){
+        return $this->userService->comprarPacote($idPacote);
     }
 }

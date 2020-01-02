@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ValidacaoUsuario;
+use App\Models\ValidacaoLogin;
 use Illuminate\Support\Facades\Auth;
 
 class UserService{
@@ -42,10 +43,10 @@ class UserService{
      
     }
 
-    public function detalhesUsusario(String $email){
+    public function detalhesUsusario(int $id){
 
         try{
-            $user = $this->user->detalhesUsusario($email);
+            $user = $this->userRepository->detalhesUsusario($id);
             return response()->json([
                 'nome' => $user->name,
                 'email'=> $user->email
@@ -57,7 +58,7 @@ class UserService{
         }
     }
 
-    public function editarUsuario(String $email, Request $request){
+    public function editarUsuario(int $id, Request $request){
 
         $validacao = Validator::make(
             $request->all(),
@@ -69,7 +70,7 @@ class UserService{
             return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
         } else {
             try {
-                $user = $this->userRepository->editarUsuario($email, $request);            
+                $user = $this->userRepository->editarUsuario($id, $request);            
                 return response()->json($user, Response::HTTP_OK);
             } catch(QueryException $e) {
                 return response()->json(['erro'=> 'Erro de conexão com o banco']
@@ -79,10 +80,10 @@ class UserService{
 
     }
 
-    public function deletarUsusario(String $email){
+    public function deletarUsusario(int $id){
 
         try {
-            $user = $this->userRepository->excluirUsuario($email);           
+            $user = $this->userRepository->deletarUsuario($id);           
             return response()->json(null, Response::HTTP_OK);
         } catch(QueryException $e) {
             return response()->json(['erro'=> 'Erro de conexão com o banco'],
@@ -96,8 +97,8 @@ class UserService{
 
         $validacao = Validator::make(
             $request->all(),
-            ValidacaoUsuario::REGRA_NOVO_USUARIO,
-            ValidacaoUsuario::MENSAGENS_DE_ERRO
+            ValidacaoLogin::REGRA_NOVO_USUARIO,
+            ValidacaoLogin::MENSAGENS_DE_ERRO
         );
 
 

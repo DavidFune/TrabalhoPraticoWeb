@@ -28,26 +28,26 @@ class UserRepositoryEloquent
         return $this->user;
     }
 
-    public function detalhesUsusario(String $email){
-        return $this->user->where($email)->get;
+    public function detalhesUsusario(int $id){
+        return $this->user->find($id);
     }
 
-    public function editarUsuario(String $email, Request $request){
+    public function editarUsuario(int $id, Request $request){
 
-        return $this->user->where('email', $email)->update($request->all());
+        return $this->user->where('id', $id)->update($request->all());
     }
 
-    public function deletarUsusario(String $email){
-        $user = $this->user->find($email);
+    public function deletarUsuario(int $id){
+        $user = $this->user->find($id);
         return $user->delete();
+    }
+
+    public function comprarPacote(int $id ,int $idPacote){
+       // return $this->where('id',$id)
     }
 
     public function login(Request $request)
     {
-
         return $request->only(['email', 'password']);
-
-        //dd($credentials);
     }
-
 }
