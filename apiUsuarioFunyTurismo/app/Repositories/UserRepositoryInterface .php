@@ -9,5 +9,6 @@ interface UserRepositoryInterface{
     public function detalhesUsusario(String $email);
     public function editarUsuario(String $email, Request $request);
     public function deletarUsusario(String $email);
-    public function comprarPacote(int $idPacote);
+    public function comprarPacote(Reques $request);
+    public function meusPacotes();
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 use App\User;
 use App\Models\Pacote;
+use App\Models\User_Pacote;
 //use App\UserPacote;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class UserRepositoryEloquent
     private $user;
     private $pacote;
 
-    public function __construct(User $user, Pacote $pacote){
+    public function __construct(User $user,
+     User_Pacote $pacote){
         $this->user = $user;
         $this->pacote = $pacote;
     }
@@ -48,11 +50,22 @@ class UserRepositoryEloquent
         return $user->delete();
     }
 
-    public function comprarPacote(int $id){
-       $pacote = $this->pacote->find($id);
-       //dd($pacote);
-       return $this->user->addPacote($pacote);
+    public function comprarPacote(Request $request){
+        $this->pacote->id_user = Auth::user()->id;
+        $this->pacote->id_pacote = $request->input('id_pacote');
+        $this->pacote->save();
+        return $this->pacote;
     }
+
+    public function meusPacotes(){
+        $id_pacotes = User_Pacote::where('id_user',
+        Auth::user()->id)->get('id_pacote');
+         $pacotes = array();
+        foreach ($id_pacotes as $id_pacote) {
+           array_push($pacotes,Pacote::where('id',$id_pacote->id_pacote)->get());
+        }
+        return $pacotes;
+     }
 
     public function login(Request $request)
     {

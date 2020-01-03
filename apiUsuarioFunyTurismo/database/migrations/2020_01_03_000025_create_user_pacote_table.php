@@ -16,6 +16,7 @@ class CreateUserPacoteTable extends Migration
         Schema::create('user_pacotes', function (Blueprint $table) {
             $table->integer('id_user')->unsigned();
             $table->integer('id_pacote')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('user_pacotes', function (Blueprint $table) {

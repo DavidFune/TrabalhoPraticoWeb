@@ -10,7 +10,7 @@ class UserAuthController extends Controller{
     private $userService;
 
     public function __construct(UserService $userService){
-        $this->middleware('auth');
+        //$this->middleware('auth');
         return $this->userService = $userService;
     }
 
@@ -26,7 +26,11 @@ class UserAuthController extends Controller{
         $this->userService->deletarUsusario($id);
     }
 
-    public function comprarPacote(int $id){
-        return $this->userService->comprarPacote($id);
+    public function comprarPacote(Request $request){
+        return $this->userService->comprarPacote($request);
+    }
+
+    public function meusPacotes(){
+        return $this->userService->meusPacotes();
     }
 }

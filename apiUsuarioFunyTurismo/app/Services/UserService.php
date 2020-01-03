@@ -122,15 +122,28 @@ class UserService{
         }
     }
 
-    public function comprarPacote(int $id){
-        
+    public function comprarPacote(Request $request){
         try {
-            $pacote = $this->userRepository->comprarPacote($id);
+            $pacote = $this->userRepository->comprarPacote($request);
             return response()->json($pacote, Response::HTTP_CREATED);
         } catch(QueryException $e) {
             //'Erro de conexão com o banco'
             return response()->json(['erro'=> $e]
             , Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function meusPacotes(){
+        try {
+            $pacotes = $this->userRepository->meusPacotes();
+     
+            if (count($pacotes) > 0) {
+                return response()->json($pacotes, Response::HTTP_OK);                
+            } else {
+                return response()->json([], Response::HTTP_OK);          
+            } 
+        } catch(QueryException $e) {
+            return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
