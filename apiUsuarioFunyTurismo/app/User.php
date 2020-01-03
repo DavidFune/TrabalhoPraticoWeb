@@ -8,9 +8,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Pacote;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
+class User extends Model implements AuthenticatableContract,
+ AuthorizableContract, JWTSubject
 {
       use Authenticatable, Authorizable;
 
@@ -20,7 +22,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email','api_token','idPacote'
+        'name', 'email','api_token'
+        //,'idPacote'
     ];
 
     /**
@@ -35,10 +38,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
  
     public function pacotes()
     {
-        return $this->belongsToMany('App\Models', 'user_pacotes', 'id_user', 'id_pacote');
+        return $this->belongsToMany('App\Models\Pacote', 'user_pacotes', 'id_user', 'id_pacote');
     }
 
     public function addPacote(Pacote $pacote){
+        //dd(Auth::user()->id);
+       // dd($this->pacotes());
         return $this->pacotes()->save($pacote);
     }
 

@@ -15,8 +15,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Matches "/api/register
     $router->post('registrar', 'UserController@registrarUsuario');
     $router->post('login', 'UserController@login');
-    $router->put('{id}/editar', 'UserController@editarUsuario');
-    $router->get('{id}/detalhes', 'UserController@detalhesUsusario');
-    $router->delete('{id}/excluir', 'UserController@deletarUsuario');
-    $router->post('comprar', 'UserController@comprarPacote');
+    $router->put('{id}/editar', 'UserAuthController@editarUsuario');
+    $router->get('{id}/detalhes', 'UserAuthController@detalhesUsusario');
+    $router->delete('{id}/excluir', 'UserAuthController@deletarUsuario');
+    $router->post('{id}/comprar', 'UserAuthController@comprarPacote');
  });

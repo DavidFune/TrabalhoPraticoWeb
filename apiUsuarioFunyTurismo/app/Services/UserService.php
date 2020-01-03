@@ -8,13 +8,14 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ValidacaoUsuario;
 use App\Models\ValidacaoLogin;
+use App\Models\Pacote;
 use Illuminate\Support\Facades\Auth;
 
 class UserService{
     
     private $userRepository;
+    private $pacote;
     public function __construct(UserRepositoryEloquent $userRepository){
-
         $this->userRepository = $userRepository;
     }
 
@@ -30,14 +31,13 @@ class UserService{
         if($validacao->fails()) {
             return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
         } else {
-
             try {
                 $user = $this->userRepository->registrarUsuario($request);
                 //return
                  return response()->json($user, Response::HTTP_CREATED);
             } catch(QueryException $e) {
                 //return
-                 return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
+                 return response()->json(['erro'=> $e], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         }
      
@@ -109,7 +109,6 @@ class UserService{
 
             try {
                 $credentials = $this->userRepository->login($request);
-
                 if (! $token = Auth::attempt($credentials)) {
                     return response()->json(['message' => 'Usuário não autorizado'], 401);
                 }
@@ -123,13 +122,14 @@ class UserService{
         }
     }
 
-    public function comprarPacote(int $idPacote){
+    public function comprarPacote(int $id){
         
         try {
-            $userPacote = $this->userRepository->comprarPacote(Request, $request);
-            return response()->json($userPacote, Response::HTTP_CREATED);
+            $pacote = $this->userRepository->comprarPacote($id);
+            return response()->json($pacote, Response::HTTP_CREATED);
         } catch(QueryException $e) {
-            return response()->json(['erro'=> 'Erro de conexão com o banco']
+            //'Erro de conexão com o banco'
+            return response()->json(['erro'=> $e]
             , Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
