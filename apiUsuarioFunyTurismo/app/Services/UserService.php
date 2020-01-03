@@ -123,6 +123,17 @@ class UserService{
         }
     }
 
+    public function comprarPacote(int $idPacote){
+        
+        try {
+            $userPacote = $this->userRepository->comprarPacote(Request, $request);
+            return response()->json($userPacote, Response::HTTP_CREATED);
+        } catch(QueryException $e) {
+            return response()->json(['erro'=> 'Erro de conexão com o banco']
+            , Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     protected function respondWithToken($token)
     {

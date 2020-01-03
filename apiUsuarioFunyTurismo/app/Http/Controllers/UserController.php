@@ -12,8 +12,8 @@ class UserController extends Controller{
         return $this->userService = $userService;
     }
 
-    public function registrarUsuario(Request $resquest){
-        return $this->userService->registrarUsuario($resquest);
+    public function registrarUsuario(Request $request){
+        return $this->userService->registrarUsuario($request);
     }
 
     public function login(Request $request){
@@ -31,7 +31,8 @@ class UserController extends Controller{
     public function deletarUsuario(int $id){
         $this->userService->deletarUsusario($id);
     }
-    public function comprarPacote(int $idPacote){
-        return $this->userService->comprarPacote($idPacote);
+    
+    public function comprarPacote(Request $request){
+        return $this->userService->comprarPacote($request);
     }
 }

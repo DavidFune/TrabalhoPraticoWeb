@@ -32,6 +32,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password'
     ];
 
+ 
+    public function pacotes()
+    {
+        return $this->belongsToMany('App\Models', 'user_pacotes', 'id_user', 'id_pacote');
+    }
+
+    public function addPacote(Pacote $pacote){
+        return $this->pacotes()->save($pacote);
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();

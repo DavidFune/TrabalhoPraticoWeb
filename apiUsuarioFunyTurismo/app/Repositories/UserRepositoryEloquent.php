@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 use App\User;
+use App\UserPacote;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,9 +11,12 @@ class UserRepositoryEloquent
 //implements UserRepositoryInterface
 {
     private $user;
+    private $userPacote;
 
-    public function __construct(User $user){
+    public function __construct(User $user, UserPacote $userPacote){
         $this->user = $user;
+        $this->userPacote = $userPacote;
+
     }
 
     public function registrarUsuario(Request $request){
@@ -42,8 +46,8 @@ class UserRepositoryEloquent
         return $user->delete();
     }
 
-    public function comprarPacote(int $id ,int $idPacote){
-       // return $this->where('id',$id)
+    public function comprarPacote(Request $request){
+       return $this->userPacote->create($request->all());
     }
 
     public function login(Request $request)

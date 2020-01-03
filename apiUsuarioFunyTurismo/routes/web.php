@@ -18,4 +18,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('{id}/editar', 'UserController@editarUsuario');
     $router->get('{id}/detalhes', 'UserController@detalhesUsusario');
     $router->delete('{id}/excluir', 'UserController@deletarUsuario');
+    $router->post('comprar', 'UserController@comprarPacote');
  });
