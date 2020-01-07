@@ -1,0 +1,17 @@
+<div class="container">
+    <app-erro-mgs></app-erro-mgs>
+    <div class="text-center" *ngIf="!existePacotes()">
+        Nenhum Pacote Cadastrado!!!
+    </div>
+    <div class="row">
+        <div class="col-lg-6  col-md-12" 
+        *ngFor="let pacote of pacotes">
+            <app-card-pacote titulo= "{{pacote.nome}}" width="18" btnTipo="btn-secondary"
+            descricao = "{{pacote.descricao}}" urlImagem = "{{pacote.urlImagem}}">
+
+                <a href="#" class="btn btn-primary">Detalhes</a>
+                
+            </app-card-pacote>
+        </div>
+    </div>
+</div>
