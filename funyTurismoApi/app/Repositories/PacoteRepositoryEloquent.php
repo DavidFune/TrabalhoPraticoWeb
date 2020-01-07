@@ -24,7 +24,7 @@ namespace App\Repositories;
              'dataInicio',
              'dataFim',
              'urlImagem',
-             'id'
+             'descricao'
          )->get();
      }
 
