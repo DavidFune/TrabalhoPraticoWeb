@@ -1,11 +1,12 @@
 
 
+
 <div class="card" style="width: 18rem;">
-<img class="card-img-top" src="{{urlImagem}}" alt="Imagem de capa do card">
-    <div class="card-body">
-    <h5 class="card-title">{{titulo}}</h5>
-    <p class="card-text">{{descricao}}</p>
+  <ng-content #header></ng-content>
+  
+  <div class="card-body">
+    <ng-content #titulo></ng-content>
     <ng-content #botao></ng-content>
-      
-    </div>
+
   </div>
+</div>

@@ -18,10 +18,9 @@ export class CardPacoteComponent implements OnInit {
   @Input() btnTipo;
 
 
-  constructor() { }
+  constructor(private pacoteService: PacoteService) { }
 
   ngOnInit() {
   }
-
 
 }

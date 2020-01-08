@@ -1,17 +1,24 @@
-<div class="container">
-    <app-erro-mgs></app-erro-mgs>
-    <div class="text-center" *ngIf="!existePacotes()">
-        Nenhum Pacote Cadastrado!!!
-    </div>
-    <div class="row">
-        <div class="col-lg-6  col-md-12" 
-        *ngFor="let pacote of pacotes">
-            <app-card-pacote titulo= "{{pacote.nome}}" width="18" btnTipo="btn-secondary"
-            descricao = "{{pacote.descricao}}" urlImagem = "{{pacote.urlImagem}}">
+<app-nav-bar (onToogle)="menuLateral.toogle()"></app-nav-bar>
+<div class="main">
+    <app-menu-lateral #menuLateral></app-menu-lateral>
+    <div class="content">
+        <div class="container">
+            <app-erro-mgs></app-erro-mgs>
+            <div class="text-center" *ngIf="!existePacotes()">
+                Nenhum Pacote Cadastrado!!!
+            </div>
 
-                <a href="#" class="btn btn-primary">Detalhes</a>
-                
-            </app-card-pacote>
+            <div class="row">
+                <div class="col-lg-4  col-md-12" style="margin: 0;" *ngFor="let pacote of pacotes">
+                    <app-card-pacote titulo="{{pacote.nome}}" width="18" btnTipo="btn-secondary"
+                        descricao="{{pacote.descricao}}" urlImagem="{{pacote.urlImagem}}">
+                        <img name="header" class="card-img-top" src="{{pacote.urlImagem}}" alt="Imagem de capa do card">
+                        <h5 name="titulo" class="card-title">{{pacote.nome}}</h5>
+                        <a name="botao" routerLink="detalhes/{{pacote.id}}" class="btn btn-primary">Detalhes</a>
+
+                    </app-card-pacote>
+                </div>
+            </div>
         </div>
     </div>
 </div>

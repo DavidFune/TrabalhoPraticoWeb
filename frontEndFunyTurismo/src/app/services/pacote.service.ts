@@ -17,14 +17,20 @@ export class PacoteService {
   } */
 
   getListaPacotes(): Observable<Pacote[]> {
-    const url = environment.apiPacotes + 'pacotes';
+    const url = `${environment.apiPacotes}pacotes`;
     return this.http.get<Pacote[]>(url);
   }
 
   getPacote(id: number): Observable<Pacote> {
-    const url = '${environment.apiPacotes}/pacote/${id}';
+    const url = `${environment.apiPacotes}pacote/${id}`;
+    console.log(this.http.get<Pacote>(url));
     return this.http.get<Pacote>(url);
   }
+
+/*   getPacoteAux(id: number) {
+    const url = `${environment.apiPacotes}pacote/${id}`;
+    return this.http.get(url);
+  } */
 
   // tslint:disable-next-line: one-line
   addPacote(id: number){

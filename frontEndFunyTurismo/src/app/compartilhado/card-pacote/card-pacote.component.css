@@ -1,0 +1,33 @@
+.card{
+    margin: 3%;
+    width: 90%;
+    border-color:black ; 
+}
+
+.card-body{
+    border: 3%;
+    padding-left: 2%;
+    padding-right: 2%;  
+      
+}
+
+.card-body h5{
+    background-color: #a4a4a4;
+    color: ghostwhite;
+    border-radius:4% ;
+
+}
+
+.main {
+
+    display: flex;
+    background-color: #ecf0f5;
+    min-height: calc(100vh - 52px);
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+    padding-top: 5%;
+}
+
