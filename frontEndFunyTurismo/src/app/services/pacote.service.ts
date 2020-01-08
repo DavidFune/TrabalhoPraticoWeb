@@ -23,7 +23,6 @@ export class PacoteService {
 
   getPacote(id: number): Observable<Pacote> {
     const url = `${environment.apiPacotes}pacote/${id}`;
-    console.log(this.http.get<Pacote>(url));
     return this.http.get<Pacote>(url);
   }
 

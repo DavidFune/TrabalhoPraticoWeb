@@ -37,7 +37,8 @@ namespace App\Repositories;
             'valor',
             'dataInicio',
             'dataFim',
-            'urlImagem'
+            'urlImagem',
+            'descricao'
         )
         ->where('id',$id)
         ->get();
