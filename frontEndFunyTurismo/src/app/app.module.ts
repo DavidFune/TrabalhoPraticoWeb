@@ -15,6 +15,7 @@ import { ListaPacotesComponent } from './compartilhado/lista-pacotes/lista-pacot
 import { ErroMgsComponent } from './compartilhado/erro-mgs/erro-mgs.component';
 import { PacoteService } from './services/pacote.service';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
     MenuLateralComponent,
     ListaPacotesComponent,
     ErroMgsComponent,
-    PaginaInicialComponent
+    PaginaInicialComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

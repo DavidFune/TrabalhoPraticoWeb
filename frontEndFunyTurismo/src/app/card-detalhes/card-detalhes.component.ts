@@ -11,9 +11,9 @@ import { Pacote } from '../interfaces/pacote';
   templateUrl: './card-detalhes.component.html',
   styleUrls: ['./card-detalhes.component.css']
 })
-export class CardDetalhesComponent implements OnInit {
+export class CardDetalhesComponent {
 
-  public pacote: Pacote = {} as Pacote;
+  public pacote: Pacote = <Pacote>{};
   public pacoteAux;
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService,
@@ -21,9 +21,6 @@ export class CardDetalhesComponent implements OnInit {
                 this.getPacote(this.activateRoutAe.snapshot.params.id);
 
               }
-
-  ngOnInit() {
-  }
 
   getPacote(id: number) {
     this.pacoteService.getPacote(id)
