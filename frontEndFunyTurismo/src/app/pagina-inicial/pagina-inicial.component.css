@@ -1,0 +1,24 @@
+.main{
+    background-color:#a3a3a36e;  
+    display: flex;
+    min-height: calc(100vh);
+    overflow: hidden;
+}
+
+img{
+    
+    height: 300px;
+    border-radius: 5px;
+    
+
+}
+
+.carousel{
+    padding-top: 10%;
+}
+
+.texCorucel {
+
+    background-color:#a3a3a3c0 ;
+    margin: 0%;
+}

@@ -10,8 +10,6 @@ import { ErroMgsComponent } from './compartilhado/erro-mgs/erro-mgs.component';
 export class AppComponent implements OnInit{
   title = 'Funy Turismo';
   // tslint:disable-next-line: comment-format
-  @ViewChild(ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
-
   ngOnInit() {
   }
 }

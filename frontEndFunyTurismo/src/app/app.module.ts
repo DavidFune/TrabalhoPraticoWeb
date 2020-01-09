@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +14,7 @@ import { MenuLateralComponent } from './compartilhado/menu-lateral/menu-lateral.
 import { ListaPacotesComponent } from './compartilhado/lista-pacotes/lista-pacotes.component';
 import { ErroMgsComponent } from './compartilhado/erro-mgs/erro-mgs.component';
 import { PacoteService } from './services/pacote.service';
+import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,14 @@ import { PacoteService } from './services/pacote.service';
     CardDetalhesComponent,
     MenuLateralComponent,
     ListaPacotesComponent,
-    ErroMgsComponent
+    ErroMgsComponent,
+    PaginaInicialComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CarouselModule,
+    BrowserAnimationsModule,
     HttpClientModule
   ],
   providers: [PacoteService],

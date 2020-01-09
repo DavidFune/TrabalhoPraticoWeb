@@ -13,7 +13,7 @@ import { Pacote } from '../interfaces/pacote';
 })
 export class CardDetalhesComponent implements OnInit {
 
-  public pacote: Pacote;
+  public pacote: Pacote = {} as Pacote;
   public pacoteAux;
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService,
