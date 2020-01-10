@@ -9,18 +9,12 @@ import { ErroMgsComponent } from '../erro-mgs/erro-mgs.component';
   templateUrl: './card-pacote.component.html',
   styleUrls: ['./card-pacote.component.css']
 })
-export class CardPacoteComponent implements OnInit {
+export class CardPacoteComponent {
 
   @Input() titulo;
   @Input() descricao;
   @Input() urlImagem;
   @Input() width;
   @Input() btnTipo;
-
-
-  constructor(private pacoteService: PacoteService) { }
-
-  ngOnInit() {
-  }
 
 }

@@ -6,35 +6,49 @@
     <h4 class="font-weight-bolder">Funy Turismo</h4>
     <ul>
   
-      <a class="" href="#">
-        <i class="material-icons">check_box</i>
-        Cadastrar
+      <a class="" routerLink="/login">
+        <i class="material-icons">fingerprint</i>
+        login
       </a>
     </ul>
   
   </nav>
   <div class="main">
     <div class="content">
-      <form class="form-signin">
+      <form class="form-signin"  #f="ngForm" (ngSubmit)="onSubmit()">
   
         <h1 class="h3 mb-3 font-weight-normal">Faça seu Cadastro</h1>
         
         <label for="inputNome" class="sr-only">Seu Nome</label>
-        <input type="text" name="nome" id="inputNome" class="form-control" placeholder="Seu Nome" required autofocus>
-        
+        <input type="text" name="nome" id="nome" class="form-control"
+        #nome = "ngModel"
+        [(ngModel)]="cadastro.nome"
+         placeholder="Seu Nome" required autofocus>
+         <div *ngIf="!nome.valid && nome.touched" class="invalid-feedback">
+           Prenencha o campo Nome!!!
+         </div>
+
         <label for="inputEmail" class="sr-only">Endereço de email</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Seu email" required autofocus>
-        
+        <input type="email" name="email" id="inputEmail" class="form-control"
+        #email="ngModel"
+        [(ngModel)]="cadastro.email"
+         placeholder="Seu email" required autofocus>
+         <div *ngIf="!email.valid && email.touched" class="invalid-feedback">
+           Prenencha o campo Email!!!
+         </div>
         <label for="inputPassword" class="sr-only">Senha</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+        <input type="password" name="password" id="inputPassword" class="form-control"
+        #password="ngModel"
+        [(ngModel)]="cadastro.password"
+         placeholder="Senha" required>
+         <div *ngIf="!password.valid && password.touched" class="invalid-feedback">
+          Prenencha o campo Senha!!!
+        </div>
         
         <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Lembrar de mim
-          </label>
+          <ng-content #checkbox></ng-content>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-  
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Salvar</button>
       </form>
     </div>
   </div>

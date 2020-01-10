@@ -6,7 +6,7 @@
   <h4 class="font-weight-bolder">Funy Turismo</h4>
   <ul>
 
-    <a class="" href="#">
+    <a class="" routerLink="/registrar">
       <i class="material-icons">check_box</i>
       Cadastrar
     </a>
@@ -14,20 +14,37 @@
 
 </nav>
 <div class="main">
+  <div class="center">
+    <app-erro-mgs></app-erro-mgs>
+  </div>
   <div class="content">
-    <form class="form-signin">
+    <form class="form-signin" #f="ngForm" (ngSubmit)="onSubmit($event)">
 
-      <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Faça seu login</h1>
       <label for="inputEmail" class="sr-only">Endereço de email</label>
-      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Seu email" required autofocus>
+      <input type="email" name="email" id="email" class="form-control"
+      #email="ngModel"
+      [(ngModel)]="login.email"
+      name="email" placeholder="Seu email" required autofocus>
+      <div *ngIf="!email.valid && email.touched" class="invalid-feedback">
+        Prenencha o campo Email!!!
+      </div>
+
       <label for="inputPassword" class="sr-only">Senha</label>
-      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+      <input type="password" name="password" id="password" class="form-control" 
+      #password="ngModel"
+      [(ngModel)]="login.password"
+      name="password" placeholder="Senha" required>
+      <div *ngIf="!password.valid && password.touched" class="invalid-feedback">
+        Prenencha o campo Senha!!!
+      </div>
+
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Lembrar de mim
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">login</button>
 
     </form>
   </div>
