@@ -11,5 +11,8 @@
 |
 */
 
-Route::get('/','PacoteController@index');
+Route::get('/','PacoteController@home');
+Route::get('/login','PacoteController@login');
+Route::post('/logar','PacoteController@logar');
+Route::get('/pacotes','PacoteController@index');
 Route::get('/pacote/detalhe/{id}','PacoteController@detalhePacote');

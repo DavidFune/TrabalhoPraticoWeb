@@ -16,6 +16,7 @@ import { ErroMgsComponent } from './compartilhado/erro-mgs/erro-mgs.component';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { LoginComponent } from './login/login.component';
 import { FormularioComponent } from './compartilhado/formulario/formulario.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormularioComponent } from './compartilhado/formulario/formulario.compo
     ErroMgsComponent,
     PaginaInicialComponent,
     LoginComponent,
-    FormularioComponent
+    FormularioComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,

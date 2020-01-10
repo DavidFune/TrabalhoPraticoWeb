@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pacote;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class PacoteController extends Controller
 {
@@ -12,14 +13,39 @@ class PacoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     private $userService;
+     private $token;
+     public function __construct(UserService $userService){
+         return $this->userService = $userService;
+     }
+     
+    public function home(){
+        
+        return view('principal.home');
+    }
+
+    public function login(){
+        return view('principal.login');
+    }
+
+    public function logar(Request $request){
+        $this->token = $this->userService->login($request);
+        dd($this->token);
+        return redirect('pacotes');
+    }
+
+
     public function index()
     {
-        $pacotes = Pacote::all();
+        $pacotes = $this->userService->getPacotes();
+        $pacotes = $pacotes['dados'];
         return view('principal.index')
         ->with('pacotes',$pacotes);
     }
     public function detalhePacote(int $id){
-        $pacote = Pacote::find($id);
+        $pacote = $this->userService->getPacote($id);
+        $pacote = $pacote['dados'][0];
         return view('detalhe')->with('pacote',$pacote);
     }
 
@@ -30,7 +56,7 @@ class PacoteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

@@ -10,7 +10,7 @@ class UserAuthController extends Controller{
     private $userService;
 
     public function __construct(UserService $userService){
-        //$this->middleware('auth');
+        $this->middleware('auth');
         return $this->userService = $userService;
     }
 

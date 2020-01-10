@@ -30,7 +30,8 @@ namespace App\Repositories;
 
     public function buscarPacote(int $id) 
     {     
-        return $this->pacote
+        return $this->pacote->find($id);
+        /* return $this->pacote
         ->select(
             'id',
             'nome',
@@ -41,7 +42,7 @@ namespace App\Repositories;
             'descricao'
         )
         ->where('id',$id)
-        ->get();
+        ->get(); */
     }
  
     public function buscarDetalhePacote(int $id) 

@@ -8,7 +8,8 @@ use Illuminate\Support\ViewErrorBag;
 class ApiService{
 
     private $client;
-    public const API_URL = 'http://localhost:8200/api/';
+    public const API_URL = 'http://localhost:8300/';
+    public const API_URL_P = 'http://localhost:8200/api/';
 
 
     public function __construct(){
@@ -28,6 +29,30 @@ class ApiService{
     public function get(string $endPoint){
         try {
             $requisicao = $this->client->request('GET',self::API_URL.$endPoint);
+            $status = $requisicao->getStatusCode();
+
+            return [
+                'dados' => json_decode($requisicao->getBody()->getContents(), true),
+                //'dados' => json_decode($requisicao->getBody()),
+                'status' => $status
+            ];
+            
+        } catch (ConnectException $e) {
+            return [
+                'erro' => 'Erro de Conexao com a API: ' . self::API_URL,
+                'status' => $e->getCode()
+            ];
+        } catch (\Exception $e) {
+            return [
+                dd($e),
+                'erro' => $e->getResponse()->getBody()->getContents(),
+                'status' => $e->getCode()
+            ];
+        }
+    }
+    public function getP(string $endPoint){
+        try {
+            $requisicao = $this->client->request('GET',self::API_URL_P.$endPoint);
             $status = $requisicao->getStatusCode();
 
             return [

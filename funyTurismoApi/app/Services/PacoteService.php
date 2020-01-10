@@ -50,11 +50,20 @@ class PacoteService{
         //return $this->pacoteRepository->buscarPacote($id);  
         try {
             $pacote = $this->pacoteRepository->buscarPacote($id);
-
-            if (count($pacote) > 0) {
-                return response()->json($pacote, Response::HTTP_OK);          
-            } else {
+            //dd($pacote);
+            if (is_null($pacote)) {
                 return response()->json(null, Response::HTTP_NOT_FOUND);
+            } else {
+                    return response()->json([
+                        'id'          => $pacote->id,
+                        'nome'        => $pacote->nome,
+                        'valor'       => $pacote->valor,
+                        'dataInicio'  => $pacote->dataInicio,
+                        'dataFim'     => $pacote->dataFim,
+                        'urlImagem'   => $pacote->urlImagem,
+                        'descricao'   => $pacote->descricao,
+                        
+                    ], Response::HTTP_OK);           
             }       
         } catch(QueryException $e) {
             return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);

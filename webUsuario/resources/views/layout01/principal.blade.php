@@ -11,9 +11,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('arquivos/bootstrap-4.3.1-dist/css/bootstrap.min.css')}}" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <!-- Custom styles for this template -->
-<link href="{{asset('arqivos/bootstrap-4.3.1-dist/css/album.css')}}" rel="stylesheet">
+<link href="{{asset('arquivos/bootstrap-4.3.1-dist/css/album.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -37,8 +38,15 @@
                     </div>
                     <div class="col-sm-2 md-1 py-4">
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Login</a></li>
-                            <li><a href="#" class="text-white">Cadastrar</a></li>
+                            <li><a href="/login" class="text-white">
+                                <i class="material-icons">fingerprint</i>
+                                Login</a>
+                            </li>
+                            <li>
+                                <a href="#" class="text-white">
+                                    <i class="material-icons">check_box</i>
+                                    Cadastrar</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -71,9 +79,10 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h1 class="jumbotron-heading">Pacotes de Turismo</h1>
-                <form class="form-inline">
-                    <input class="form-control" style="min-width:40%;padding-right:72%;" type="search"
-                        placeholder="Pesquisar" aria-label="Search">
+                <form class="form-inline" style="position: relative">
+                    <input class="form-control" 
+                    style="min-width:40%;padding:0%; margin-left: 25%" 
+                    type="search" placeholder="Pesquisar" aria-label="Search">
                     <button class="btn btn-outline-success my-3 my-sm-0" type="submit">Pesquisar</button>
                 </form>
             </div>
@@ -82,17 +91,17 @@
     </main>
 
 
-    <footer class="text-muted">
+        <footer class="text-muted">
         @section('footer')
-            
-        <div class="container">
-            <p class="float-right">
-                <a href="#">Voltar ao topo</a>
-            </p>
-            <p>Funy Turismo &copy; Uma empresa des 2000</p>
-        </div>
-    </footer>
-    @endsection
+                
+            <div class="container">
+                <p class="float-right">
+                    <a href="#">Voltar ao topo</a>
+                </p>
+                <p>Funy Turismo &copy; Uma empresa des 2000</p>
+            </div>
+        </footer>
+        @show
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
