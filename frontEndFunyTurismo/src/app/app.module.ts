@@ -13,9 +13,9 @@ import { CardDetalhesComponent } from './card-detalhes/card-detalhes.component';
 import { MenuLateralComponent } from './compartilhado/menu-lateral/menu-lateral.component';
 import { ListaPacotesComponent } from './compartilhado/lista-pacotes/lista-pacotes.component';
 import { ErroMgsComponent } from './compartilhado/erro-mgs/erro-mgs.component';
-import { PacoteService } from './services/pacote.service';
 import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { LoginComponent } from './login/login.component';
+import { FormularioComponent } from './compartilhado/formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { LoginComponent } from './login/login.component';
     ListaPacotesComponent,
     ErroMgsComponent,
     PaginaInicialComponent,
-    LoginComponent
+    LoginComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,7 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [PacoteService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

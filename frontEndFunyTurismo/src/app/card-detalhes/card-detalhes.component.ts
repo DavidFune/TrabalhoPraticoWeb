@@ -13,13 +13,13 @@ import { Pacote } from '../interfaces/pacote';
 })
 export class CardDetalhesComponent {
 
-  public pacote: Pacote = <Pacote>{};
+  public pacote: Pacote = {} as Pacote;
   public pacoteAux;
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService,
-              private activateRoutAe: ActivatedRoute) {
+              private activateRoutAe: ActivatedRoute
+              ) {
                 this.getPacote(this.activateRoutAe.snapshot.params.id);
-
               }
 
   getPacote(id: number) {

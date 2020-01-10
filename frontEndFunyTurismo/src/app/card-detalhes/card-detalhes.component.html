@@ -1,12 +1,41 @@
 <div *ngIf="pacote">
     <app-nav-bar (onToogle)="menuLateral.toogle()"></app-nav-bar>
-<div class="main">
-    <app-menu-lateral #menuLateral></app-menu-lateral>
-    <div class="content">
-        <app-erro-mgs></app-erro-mgs>
-        <div class="text-center" *ngIf="existePacote()">
-        Falha ao buscar pacote!!!
+    <div class="main">
+        <app-menu-lateral #menuLateral></app-menu-lateral>
+        <div class="content">
+            <app-erro-mgs></app-erro-mgs>
+            <div class="text-center" *ngIf="existePacote()">
+                Falha ao buscar pacote!!!
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{pacote.urlImagem}}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text">{{pacote.nome}}</p>
+
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-outline-secondary" href="#" role="button">Comprar</a>
+                                    </div>
+                                    <small class="text-muted">R$:{{pacote.valor}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <p class="card-text">{{pacote.descricao}}</p>
+                                <p class="card-text">Partida: {{pacote.dataInicio}}</p>
+                                <p class="card-text">Volta: {{pacote.dataFim}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    <p>{{pacote.id}}</p>
-</div>
-</div>
