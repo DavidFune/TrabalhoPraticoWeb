@@ -10,7 +10,7 @@ import { Login } from '../interfaces/login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  login: Login= {} as Login;
+  login: Login = {} as Login;
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService, private router: Router) { }
 
