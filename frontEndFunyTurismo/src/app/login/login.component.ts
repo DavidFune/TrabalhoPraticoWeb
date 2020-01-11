@@ -10,13 +10,13 @@ import { Login } from '../interfaces/login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  login: Login= {} as Login;
+  login: Login = {} as Login;
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService, private router: Router) { }
 
-
-  onSubmit(event: Login) {
-    this.pacoteService.loginUser(event)
+  onSubmit() {
+    console.log(this.login.email);
+    this.pacoteService.loginUser(this.login)
     .subscribe(
       () => { this.router.navigateByUrl('/'); },
       () => {this.erroMgsComponent.setErro('Falha ao Logar'); }
