@@ -6,7 +6,7 @@
   <h4 class="font-weight-bolder">Funy Turismo</h4>
   <ul>
 
-    <a class="" routerLink="/registrar">
+    <a class="" routerLink="/cadastrar">
       <i class="material-icons">check_box</i>
       Cadastrar
     </a>
@@ -44,6 +44,9 @@
           <input type="checkbox" value="remember-me"> Lembrar de mim
         </label>
       </div>
+      <!-- <button [disabled]="!f.valid" [disabled]="loading" class="btn btn-primary"> <span *ngIf="loading" 
+        class="spinner-border spinner-border-sm mr-1"></span> Login </button>
+ -->
       <button class="btn btn-primary" type="submit" [disabled]="!f.valid">login</button>
 
     </form>

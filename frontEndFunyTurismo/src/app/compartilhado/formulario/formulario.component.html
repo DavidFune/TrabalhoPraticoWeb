@@ -36,6 +36,7 @@
          <div *ngIf="!email.valid && email.touched" class="invalid-feedback">
            Prenencha o campo Email!!!
          </div>
+
         <label for="inputPassword" class="sr-only">Senha</label>
         <input type="password" name="password" id="inputPassword" class="form-control"
         #password="ngModel"
@@ -43,6 +44,15 @@
          placeholder="Senha" required>
          <div *ngIf="!password.valid && password.touched" class="invalid-feedback">
           Prenencha o campo Senha!!!
+        </div>
+
+        <label for="password_confirmation" class="sr-only">Senha</label>
+        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+        #password_confirmation="ngModel"
+        [(ngModel)]="cadastro.password_confirmation"
+         placeholder="Confirme a Senha" required>
+         <div *ngIf="!password_confirmation.valid && password_confirmation.touched" class="invalid-feedback">
+          Confirme a Senha!!!
         </div>
         
         <div class="checkbox mb-3">

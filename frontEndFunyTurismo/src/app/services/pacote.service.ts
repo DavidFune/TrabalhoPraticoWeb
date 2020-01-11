@@ -25,8 +25,8 @@ export class PacoteService {
 
   getPacote(id: number): Observable<Pacote> {
     const url = `${environment.apiPacotes}pacote/${id}`;
-    console.log(this.http.get<Pacote>(url));
-    return this.http.get<Pacote>(url);
+    console.log('Test' + this.http.get<Pacote>(url));
+    return this.http.get<Pacote>(url).pipe();
   }
 
  /*  getPacoteAux(id: number) {
@@ -44,8 +44,9 @@ export class PacoteService {
     const url = `${environment.apiUsuario}registrar`;
     return this.http.post<Cadastro>(url, cadastro);
   }
-  loginUser(login: Login): Observable<Login> {
+   loginUser(login: Login): Observable<Login> {
     const url = `${environment.apiUsuario}login`;
+    console.log(this.http.post(url, login));
     return this.http.post<Login>(url, login);
   }
 

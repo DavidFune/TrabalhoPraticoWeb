@@ -8,7 +8,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: PaginaInicialComponent},
+  {path: '', component: PaginaInicialComponent},
   {path: 'cadastrar', component: CadastroComponent},
   {path: 'login', component: LoginComponent},
   {path: 'pacotes', component: ListaPacotesComponent},

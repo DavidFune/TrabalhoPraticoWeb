@@ -34,13 +34,45 @@ class UserService{
             try {
                 $user = $this->userRepository->registrarUsuario($request);
                 //return
-                 return response()->json($user, Response::HTTP_CREATED);
+                 return response()->json($user, Response::HTTP_OK);
             } catch(QueryException $e) {
                 //return
                  return response()->json(['erro'=> $e], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         }
      
+    }
+
+    public function login(Request $request){
+
+        $validacao = Validator::make(
+            $request->all(),
+            ValidacaoLogin::REGRA_NOVO_USUARIO,
+            ValidacaoLogin::MENSAGENS_DE_ERRO
+        );
+
+
+
+        if($validacao->fails()) {
+            return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
+        } else {
+
+            try {
+                $credentials = $this->userRepository->login($request);
+                if (! $token = Auth::attempt($credentials)) {
+                    return response()->json(['message' => 'Usuário não autorizado'], 401);
+                }
+                
+                //return $this->respondWithToken($token);
+                return response()->json([
+                    'token'          => $token, 
+                ], Response::HTTP_OK); 
+                
+                //return response()->json($user, Response::HTTP_OK);
+            } catch(QueryException $e) {
+                return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
+        }
     }
 
     public function detalhesUsusario(int $id){
@@ -92,36 +124,6 @@ class UserService{
 
     }
 
-
-    public function login(Request $request){
-
-        $validacao = Validator::make(
-            $request->all(),
-            ValidacaoLogin::REGRA_NOVO_USUARIO,
-            ValidacaoLogin::MENSAGENS_DE_ERRO
-        );
-
-
-
-        if($validacao->fails()) {
-            return response()->json($validacao->errors(), Response::HTTP_BAD_REQUEST); 
-        } else {
-
-            try {
-                $credentials = $this->userRepository->login($request);
-                if (! $token = Auth::attempt($credentials)) {
-                    return response()->json(['message' => 'Usuário não autorizado'], 401);
-                }
-                
-                return $this->respondWithToken($token);
-
-                return response()->json($user, Response::HTTP_OK);
-            } catch(QueryException $e) {
-                return response()->json(['erro'=> 'Erro de conexão com o banco'], Response::HTTP_INTERNAL_SERVER_ERROR);
-            }
-        }
-    }
-
     public function comprarPacote(Request $request){
         try {
             $pacote = $this->userRepository->comprarPacote($request);
@@ -151,8 +153,8 @@ class UserService{
     protected function respondWithToken($token)
     {
         
-        // return
-        print( response()->json([
+        
+        return ( response()->json([
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => Auth::factory()->getTTL() * 60

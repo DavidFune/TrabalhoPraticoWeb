@@ -1,6 +1,6 @@
-<app-formulario>
-
-    <label name="checkbox">
-        <input type="checkbox" value="remember-me"> Lembrar de mim
-      </label>
+<app-formulario (outputCadastro)="addUser()">
+  <app-erro-mgs></app-erro-mgs>
+  <label name="checkbox">
+    <input type="checkbox" value="remember-me"> Lembrar de mim
+  </label>
 </app-formulario>

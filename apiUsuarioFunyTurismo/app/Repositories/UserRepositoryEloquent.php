@@ -26,7 +26,7 @@ class UserRepositoryEloquent
 
         $this->user->name = $request->input('name');
         $this->user->email = $request->input('email');
-        $this->user->api_token = $request->input('api_token');
+        //$this->user->api_token = $request->input('api_token');
         //$this->user->idPacote = $request->input('idPacote');
         $plainPassword = $request->input('password');
         $this->user->password = app('hash')->make($plainPassword);
