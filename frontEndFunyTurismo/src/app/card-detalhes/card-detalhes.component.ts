@@ -40,7 +40,7 @@ export class CardDetalhesComponent {
 
   addPacote() {
     this.pacoteService.addPacote(this.pacote.id)
-    .subscribe(dado => this.msg = dado
+    .subscribe((dado) => {this.msg = dado; this.router.navigateByUrl('/meuspacotes'); }
       , () => {this.erroMgsComponent.setErro('Faça Login ou se cadastre'); this.router.navigateByUrl('/login'); });
   }
 

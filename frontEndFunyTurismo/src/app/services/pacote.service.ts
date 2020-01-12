@@ -31,7 +31,6 @@ export class PacoteService {
     const url = `${environment.apiPacotes}pacotes`;
     return this.http.get<Pacote[]>(url);
   }
-  
   getMeusPacotes(): Observable<Pacote[]> {
     const url = environment.apiUsuario + 'meuspacotes' +
     '?token=' + this.token.token;
@@ -50,7 +49,6 @@ export class PacoteService {
 
   // tslint:disable-next-line: one-line
   addPacote(id: number){
-    console.log(id);
     const url = environment.apiUsuario + 'comprar' +
     '?id_pacote=' + id + '&token=' + this.token.token;
     return this.http.post(url, {});
