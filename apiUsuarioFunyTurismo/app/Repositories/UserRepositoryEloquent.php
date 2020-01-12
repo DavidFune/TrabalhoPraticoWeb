@@ -62,7 +62,9 @@ class UserRepositoryEloquent
         Auth::user()->id)->get('id_pacote');
          $pacotes = array();
         foreach ($id_pacotes as $id_pacote) {
-           array_push($pacotes,Pacote::where('id',$id_pacote->id_pacote)->get());
+           $pacote = Pacote::where('id',$id_pacote->id_pacote)->get();
+           $pacote = $pacote[0];
+           array_push($pacotes,$pacote);
         }
         return $pacotes;
      }

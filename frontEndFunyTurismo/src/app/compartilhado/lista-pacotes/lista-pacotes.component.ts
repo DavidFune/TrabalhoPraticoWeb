@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ErroMgsComponent } from '../erro-mgs/erro-mgs.component';
 import { PacoteService } from 'src/app/services/pacote.service';
 import { Pacote } from 'src/app/interfaces/pacote';
@@ -10,8 +10,7 @@ import { Pacote } from 'src/app/interfaces/pacote';
 })
 export class ListaPacotesComponent implements OnInit {
 
-  public pacotes: Pacote[];
-  public inscricao;
+  @Input() pacotes: Pacote[];
   @ViewChild (ErroMgsComponent, {static: false}) erroMgsComponent: ErroMgsComponent;
   constructor(private pacoteService: PacoteService) { }
 

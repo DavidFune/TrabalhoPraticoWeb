@@ -19,8 +19,9 @@ export class CadastroComponent {
   addUser(cadastro: Cadastro) {
     this.pacoteService.addUser(cadastro)
     .subscribe(
-      () => {this.router.navigateByUrl('/home'); }, erro => {
+      () => {this.router.navigateByUrl('/pacotes'); },  erro => {
         if (erro.status === 400) {
+          this.erroMgsComponent.setErro('Preencha os campus corretamente');
           console.log(erro);
         }
       },

@@ -18,6 +18,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { LoginComponent } from './login/login.component';
 import { FormularioComponent } from './compartilhado/formulario/formulario.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { MeusPacotesComponent } from './meus-pacotes/meus-pacotes.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     PaginaInicialComponent,
     LoginComponent,
     FormularioComponent,
-    CadastroComponent
+    CadastroComponent,
+    MeusPacotesComponent
   ],
   imports: [
     BrowserModule,

@@ -22,9 +22,9 @@ export class LoginComponent {
     // console.log(event);
     this.pacoteService.loginUser(this.login)
     .subscribe(
-      (token: any) =>  {this.token = token; },
+      (dados: any) =>  {this.pacoteService.setToken(dados);
+                        this.router.navigateByUrl('/pacotes'); },
       () => {this.erroMgsComponent.setErro('Falha ao Logar'); }
     );
-    console.log(this.token);
   }
 }

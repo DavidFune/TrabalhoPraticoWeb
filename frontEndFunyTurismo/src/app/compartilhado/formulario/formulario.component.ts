@@ -13,6 +13,7 @@ export class FormularioComponent {
   @Output() outputCadastro: EventEmitter<Cadastro> = new EventEmitter();
 
   onSubmit() {
+    // console.log(this.cadastro);
     this.outputCadastro.emit(this.cadastro);
   }
 

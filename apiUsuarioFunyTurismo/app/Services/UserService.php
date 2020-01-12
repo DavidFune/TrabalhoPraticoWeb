@@ -34,7 +34,7 @@ class UserService{
             try {
                 $user = $this->userRepository->registrarUsuario($request);
                 //return
-                 return response()->json($user, Response::HTTP_OK);
+                 return response()->json($user, Response::HTTP_CREATED);
             } catch(QueryException $e) {
                 //return
                  return response()->json(['erro'=> $e], Response::HTTP_INTERNAL_SERVER_ERROR);

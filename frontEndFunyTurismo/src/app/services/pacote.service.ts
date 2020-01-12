@@ -5,27 +5,41 @@ import { Observable } from 'rxjs';
 import { Pacote } from '../interfaces/pacote';
 import { Cadastro } from '../interfaces/cadastro';
 import { Login } from '../interfaces/login';
+import { Token } from '../interfaces/token';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PacoteService {
-
-  constructor(private http: HttpClient) {}
+  private token: Token = {} as Token;
+  constructor(private http: HttpClient) {
+  }
 
 /*   getListaPacotes() {
     return this.http.get(environment.apiPacotes + 'pacotes');
   } */
 
+  public setToken(token: Token) {
+    this.token = token;
+  }
+  public getToken() {
+    return this.token.token;
+  }
+
   getListaPacotes(): Observable<Pacote[]> {
     const url = `${environment.apiPacotes}pacotes`;
+    return this.http.get<Pacote[]>(url);
+  }
+  
+  getMeusPacotes(): Observable<Pacote[]> {
+    const url = environment.apiUsuario + 'meuspacotes' +
+    '?token=' + this.token.token;
     return this.http.get<Pacote[]>(url);
   }
 
   getPacote(id: number): Observable<Pacote> {
     const url = `${environment.apiPacotes}pacote/${id}`;
-    console.log('Test' + this.http.get<Pacote>(url));
     return this.http.get<Pacote>(url).pipe();
   }
 
@@ -36,8 +50,10 @@ export class PacoteService {
 
   // tslint:disable-next-line: one-line
   addPacote(id: number){
-    const url = `${environment.apiUsuario}comprar`;
-    return this.http.post(url, id);
+    console.log(id);
+    const url = environment.apiUsuario + 'comprar' +
+    '?id_pacote=' + id + '&token=' + this.token.token;
+    return this.http.post(url, {});
   }
 
   addUser(cadastro: Cadastro): Observable<Cadastro> {
@@ -46,7 +62,6 @@ export class PacoteService {
   }
    loginUser(login: Login): Observable<Login> {
     const url = `${environment.apiUsuario}login`;
-    console.log(this.http.post(url, login));
     return this.http.post<Login>(url, login);
   }
 
@@ -54,4 +69,5 @@ export class PacoteService {
     const url = `${environment.apiUsuario}editar`;
     return this.http.put<Cadastro>(url, editar);
   }
+
 }

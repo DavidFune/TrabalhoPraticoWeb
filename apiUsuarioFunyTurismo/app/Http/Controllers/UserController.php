@@ -14,7 +14,6 @@ class UserController extends Controller{
     }
 
     public function registrarUsuario(Request $request){
-        dd($request);
         return $this->userService->registrarUsuario($request);
     }
 

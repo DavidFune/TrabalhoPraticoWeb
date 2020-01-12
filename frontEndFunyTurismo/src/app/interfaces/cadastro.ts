@@ -1,5 +1,5 @@
 export interface Cadastro {
-    nome: string;
+    name: string;
     email: string;
     password: string;
     password_confirmation: string;

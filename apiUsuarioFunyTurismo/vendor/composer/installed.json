@@ -761,17 +761,17 @@
     },
     {
         "name": "illuminate/contracts",
-        "version": "v6.8.0",
-        "version_normalized": "6.8.0.0",
+        "version": "v6.10.0",
+        "version_normalized": "6.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/contracts.git",
-            "reference": "484727dc42f1c9dbffb2182f6fb0d01ca1aba556"
+            "reference": "f1326dfae72c646a8598138b446347954f5e991e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/contracts/zipball/484727dc42f1c9dbffb2182f6fb0d01ca1aba556",
-            "reference": "484727dc42f1c9dbffb2182f6fb0d01ca1aba556",
+            "url": "https://api.github.com/repos/illuminate/contracts/zipball/f1326dfae72c646a8598138b446347954f5e991e",
+            "reference": "f1326dfae72c646a8598138b446347954f5e991e",
             "shasum": ""
         },
         "require": {
@@ -779,11 +779,11 @@
             "psr/container": "^1.0",
             "psr/simple-cache": "^1.0"
         },
-        "time": "2019-12-06T13:40:59+00:00",
+        "time": "2020-01-07T13:47:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "6.0-dev"
+                "dev-master": "6.x-dev"
             }
         },
         "installation-source": "dist",
@@ -1373,17 +1373,17 @@
     },
     {
         "name": "illuminate/support",
-        "version": "v6.8.0",
-        "version_normalized": "6.8.0.0",
+        "version": "v6.10.0",
+        "version_normalized": "6.10.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/illuminate/support.git",
-            "reference": "1536bbc476208a022805cb5b95ab72094d6d1b42"
+            "reference": "564b8b6ae8ca7660143c6b807effb289d5fd2616"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/illuminate/support/zipball/1536bbc476208a022805cb5b95ab72094d6d1b42",
-            "reference": "1536bbc476208a022805cb5b95ab72094d6d1b42",
+            "url": "https://api.github.com/repos/illuminate/support/zipball/564b8b6ae8ca7660143c6b807effb289d5fd2616",
+            "reference": "564b8b6ae8ca7660143c6b807effb289d5fd2616",
             "shasum": ""
         },
         "require": {
@@ -1405,11 +1405,11 @@
             "symfony/var-dumper": "Required to use the dd function (^4.3.4).",
             "vlucas/phpdotenv": "Required to use the Env class and env helper (^3.3)."
         },
-        "time": "2019-12-12T14:16:31+00:00",
+        "time": "2020-01-07T13:47:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "6.0-dev"
+                "dev-master": "6.x-dev"
             }
         },
         "installation-source": "dist",
