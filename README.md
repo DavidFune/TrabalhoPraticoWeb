@@ -78,4 +78,8 @@ para acessar a aplicação no navegador digite:
 
 http://localhost:4200/
 
+e ára do moderador 
+
+http://localhost:8000/
+
 Pronto!!!
