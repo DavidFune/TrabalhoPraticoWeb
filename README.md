@@ -24,38 +24,58 @@ git init
 git clone https://github.com/DavidFune/TrabalhoPraticoWeb.git
 
 cd TrabalhoPraticoWeb (master)
+
 cd apiUsuarioFunyTurismo
+
 composer install
+
 php artisan migrate
+
 cd ..
+
 cd funyTurismoApi
+
 composer install
+
 php artisan migrate
+
 cd ..
+
 cd moderadorWeb
+
 composer install
+
 php artisan key:generate
+
 cd ..
+
 cd frontEndFunyTurismo
+
 npm install
+
 cd ..
 
 Agora é hora de subir a aplicação, em cada
 diretório abra um terminal de sua preferência 
 
 ../apiUsuarioFunyTurismo
+
 php -S localhost:8300 -t public
 
 ../frontEndFunyTurismo
+
 ng serve
 
 ../funyTurismoApi
+
 php -S localhost:8200 -t public
 
 ../moderadorWeb
+
 php artisan serve
 
 para acessar a aplicação no navegador digite:
+
 http://localhost:4200/
 
 Pronto!!!
