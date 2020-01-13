@@ -47,6 +47,10 @@ composer install
 
 php artisan key:generate
 
+php artisan storage:link
+
+vá até a pasta storage e crie uma pasta chamada uploads
+
 cd ..
 
 cd frontEndFunyTurismo
