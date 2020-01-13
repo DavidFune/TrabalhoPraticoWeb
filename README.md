@@ -29,6 +29,8 @@ cd apiUsuarioFunyTurismo
 
 composer install
 
+php artisan jwt:secret
+
 php artisan migrate
 
 cd ..
@@ -38,6 +40,8 @@ cd funyTurismoApi
 composer install
 
 php artisan migrate
+
+php artisan jwt:secret
 
 cd ..
 
