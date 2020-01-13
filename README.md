@@ -6,11 +6,23 @@ já o webUsuario é a é consumidos por pessoas que querm se cadastrar e comprar
 
 Para rodar esse projeto é necessário:
 MySql server 5.*
+
 PHP 7.*
+
+OpenSSL PHP Extension
+
+PDO PHP Extension
+
+Mbstring PHP Extension
+
 composer 1.*
+
 Laravel 5.*
+
 Lumen 5.*
+
 node.js 6.*
+
 Angular 8.*
 
 Comandos:
